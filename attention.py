@@ -3,9 +3,11 @@ import numpy as np
 import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-FACE_DETECTOR_MODEL = "models/face_detector.tflite"
-FACE_LANDMARK_MODEL = "models/face_landmarker.task"
+FACE_DETECTOR_MODEL = os.path.join(BASE_DIR, "models", "face_detector.tflite")
+FACE_LANDMARK_MODEL = os.path.join(BASE_DIR, "models", "face_landmarker.task")
 
 base_fd = python.BaseOptions(model_asset_path=FACE_DETECTOR_MODEL)
 fd_options = vision.FaceDetectorOptions(
